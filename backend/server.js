@@ -37,6 +37,10 @@ app.use("/posts", verifyToken, uploadContent.single("picture"), postRoute);
 app.use("/api/auth", userAuthRoute);
 app.use("/users", verifyToken,userRoute);
 app.use("/posts", verifyToken, postRoute)
+app.use("/hello", (req, res) => {
+    res.status(200);
+    console.log("hello kenny it works")
+})
 
 // Start server and listen for requests
 const port = process.env.PORT;
