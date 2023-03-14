@@ -45,21 +45,18 @@ export default function Navbar() {
   return (
   <FlexBetween padding = "1rem 6%" backgroundColor = {alt}>
             <FlexBetween gap = "1.75rem">
-              <Typography 
+              <Box
               onClick = {() => navigate("/home")}
-              fontWeight= "bold"
-              fontSize = "clamp(1rem, 2rem, 2.25rem)"
-              color = "primary"
-              sx={{
-                "&:hover" : {
-                  color: primaryLight,
-                  cursor: "pointer"
-                }
-                
-              }}
+             sx = {{
+              "&:hover": {
+                cursor: "pointer"
+              }
+             }}
               >
-              <img src='../../../logo-full.png' />
-              </Typography>
+              <img src='../../../logo-full.png'
+              height = "50rem" />
+              </Box>
+             
               {isNonMobileScreens && (
                 <FlexBetween 
                 backgroundColor = {neutralLight}
