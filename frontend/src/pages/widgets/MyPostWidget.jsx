@@ -58,8 +58,6 @@ const MyPostWidget = ({ picturePath }) => {
     setPost("");
   };
 
-  console.log(token)
-
   return (
     <WidgetWrapper>
       <FlexBetween gap="1.5rem">

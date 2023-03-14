@@ -30,8 +30,7 @@ const getUserFriends = async (req, res) => {
   }
 };
 
-
- //UPDATE DATA
+//add or remove friend
 const addRemoveFriend = async (req, res) => {
   try {
     const { id, friendId } = req.params;
@@ -39,6 +38,12 @@ const addRemoveFriend = async (req, res) => {
     // Find the current user and friend in the database
     const user = await User.findById(id);
     const friend = await User.findById(friendId);
+
+    // Check if the user is trying to add themselves as a friend
+    if (user._id.equals(friend._id)) {
+      res.status(400).json({ message: "Cannot add yourself as a friend" });
+      return;
+    }
 
     // Determine whether the friend is already in the user's friends list
     const friendIndex = user.friends.indexOf(friendId);

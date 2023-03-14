@@ -46,6 +46,7 @@ export default function Navbar() {
   <FlexBetween padding = "1rem 6%" backgroundColor = {alt}>
             <FlexBetween gap = "1.75rem">
               <Typography 
+              onClick = {() => navigate("/home")}
               fontWeight= "bold"
               fontSize = "clamp(1rem, 2rem, 2.25rem)"
               color = "primary"
@@ -54,6 +55,7 @@ export default function Navbar() {
                   color: primaryLight,
                   cursor: "pointer"
                 }
+                
               }}
               >
                 Social-App

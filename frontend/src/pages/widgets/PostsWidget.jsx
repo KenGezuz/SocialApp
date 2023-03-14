@@ -33,7 +33,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   }else {
     getPosts();
   }
- }, []); //eslint-disable-line react-hooks/eshaustive-deps
+ }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <>
     {posts.map(
