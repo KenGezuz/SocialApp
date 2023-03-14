@@ -31,12 +31,12 @@ app.use("/assets", express.static(path.join(__dirname, "./public/assets")));
 
 // Use routes with file upload
 app.use("/api/auth/register", uploadContent.single("picture"), registerUser);
-app.use("/posts", verifyToken, uploadContent.single("picture"), createPost);
+app.use("/posts", verifyToken, uploadContent.single("picture"), postRoute);
 
 // Use regular routes
 app.use("/api/auth", userAuthRoute);
 app.use("/users", verifyToken,userRoute);
-app.use("/posts", verifyToken, postRoute);
+app.use("/posts", verifyToken, postRoute)
 
 // Start server and listen for requests
 const port = process.env.PORT;

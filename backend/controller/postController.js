@@ -1,5 +1,5 @@
-const postModel = require("../models/postModel");
-const userModel = require("../models/userModel");
+const Post = require("../models/postModel");
+const User = require("../models/userModel");
 
 /* CREATE */
 const createPost = async (req, res) => {
@@ -8,10 +8,10 @@ const createPost = async (req, res) => {
     const { userId, description, picturePath } = req.body;
     
     // Find the user who created the post
-    const user = await userModel.findById(userId);
+    const user = await User.findById(userId);
 
     // Create a new post with the user's information and the provided data
-    const newPost = new postModel({
+    const newPost = new Post({
       userId,
       firstName: user.firstName,
       lastName: user.lastName,
@@ -27,7 +27,7 @@ const createPost = async (req, res) => {
     await newPost.save();
 
     // Retrieve all posts from the database and return them in the response
-    const posts = await postModel.find();
+    const posts = await Post.find({});
     res.status(201).json(posts);
   } catch (err) {
     res.status(409).json({ message: err.message });
@@ -38,12 +38,13 @@ const createPost = async (req, res) => {
 const getFeedPosts = async (req, res) => {
   try {
     // Retrieve all posts from the database and return them in the response
-    const posts = await postModel.find();
+    const posts = await Post.find({});
     res.status(200).json(posts);
   } catch (err) {
     res.status(404).json({ message: err.message });
   }
 };
+
 
 const getUserPosts = async (req, res) => {
   try {
@@ -51,7 +52,7 @@ const getUserPosts = async (req, res) => {
     const { userId } = req.params;
 
     // Find all posts in the database that belong to the specified user
-    const posts = await postModel.find({ userId });
+    const posts = await Post.find({ userId });
 
     // Return the user's posts in the response
     res.status(200).json(posts);
@@ -68,7 +69,7 @@ const likePost = async (req, res) => {
     const { userId } = req.body;
 
     // Find the post in the database
-    const post = await postModel.findById(id);
+    const post = await Post.findById(id);
 
     // Check if the user has already liked the post
     const isLiked = post.likes.get(userId);
@@ -81,7 +82,7 @@ const likePost = async (req, res) => {
     }
 
     // Update the post's likes in the database
-    const updatedPost = await postModel.findByIdAndUpdate(
+    const updatedPost = await Post.findByIdAndUpdate(
       id,
       { likes: post.likes },
       { new: true } // Return the updated document in the response

@@ -1,5 +1,6 @@
 const express = require("express");
 const {
+  createPost,
   getFeedPosts,
   getUserPosts,
   likePost,
@@ -7,8 +8,9 @@ const {
 
 const router = express.Router();
 
+router.post("/", createPost);
 // Get all feed posts
-router.get("/", getFeedPosts);
+router.get("/feed", getFeedPosts);
 
 // Get all posts by a user
 router.get("/:userId/posts", getUserPosts);

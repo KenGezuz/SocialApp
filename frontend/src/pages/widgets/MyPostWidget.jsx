@@ -37,6 +37,7 @@ const MyPostWidget = ({ picturePath }) => {
   const mediumMain = palette.neutral.mediumMain;
   const medium = palette.neutral.medium;
 
+
   const handlePost = async () => {
     const formData = new FormData();
     formData.append("userId", _id);
@@ -45,7 +46,7 @@ const MyPostWidget = ({ picturePath }) => {
       formData.append("picture", image);
       formData.append("picturePath", image.name);
     }
-
+    
     const response = await fetch(`http://localhost:5000/posts`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
@@ -56,6 +57,8 @@ const MyPostWidget = ({ picturePath }) => {
     setImage(null);
     setPost("");
   };
+
+  console.log(token)
 
   return (
     <WidgetWrapper>
@@ -86,9 +89,7 @@ const MyPostWidget = ({ picturePath }) => {
             onDrop={(acceptedFiles) => setImage(acceptedFiles[0])}
           >
             {({ getRootProps, getInputProps }) => (
-              <FlexBetween>
-                console.log(getRootProps)
-                console.log(getInputProps)         
+              <FlexBetween>       
                 <Box
                   {...getRootProps()}
                   border={`2px dashed ${palette.primary.main}`}
