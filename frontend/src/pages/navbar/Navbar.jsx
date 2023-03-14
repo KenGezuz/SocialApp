@@ -58,7 +58,7 @@ export default function Navbar() {
                 
               }}
               >
-                Social-App
+              <img src='../../../logo-full.png' />
               </Typography>
               {isNonMobileScreens && (
                 <FlexBetween 

@@ -12,10 +12,9 @@ const LoginPage = () => {
         p = "1rem 6%"
         textAlign = "center"
         >
-            <Typography fontWeight = "bold" fontSize = "32px" color = "primary" >
-                Social-App
+            <Typography fontWeight = "bold" >
+                <img src='../../../logo-full.png' />
             </Typography>
-        
 
         <Box 
         width = {isNonMobileScreens ? "50%" : "93%"}
