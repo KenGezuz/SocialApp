@@ -13,7 +13,7 @@ const LoginPage = () => {
         textAlign = "center"
         >
             <Typography fontWeight = "bold" >
-                <img src='../../../logo-full.png' />
+               
             </Typography>
 
         <Box 
