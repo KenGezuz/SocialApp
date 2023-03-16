@@ -35,7 +35,7 @@ app.use("/posts", verifyToken, uploadContent.single("picture"), postRoute);
 
 // Use regular routes
 app.use("/hello", (req, res) => {
-    res.status(200),json("Hello Kenny, Welcome");
+    res.status(200).json("Hello Kenny, Welcome");
 });
 app.use("/api/auth", userAuthRoute);
 app.use("/users", verifyToken,userRoute);
