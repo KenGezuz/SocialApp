@@ -34,13 +34,12 @@ app.use("/api/auth/register", uploadContent.single("picture"), registerUser);
 app.use("/posts", verifyToken, uploadContent.single("picture"), postRoute);
 
 // Use regular routes
+app.use("/hello", (req, res) => {
+    res.status(200),json("Hello Kenny, Welcome");
+});
 app.use("/api/auth", userAuthRoute);
 app.use("/users", verifyToken,userRoute);
 app.use("/posts", verifyToken, postRoute)
-app.use("/hello", (req, res) => {
-    res.status(200);
-    console.log("hello kenny it works")
-})
 
 // Start server and listen for requests
 const port = process.env.PORT;
