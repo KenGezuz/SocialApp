@@ -39,7 +39,24 @@ app.use("/hello", (req, res) => {
 });
 app.use("/api/auth", userAuthRoute);
 app.use("/users", verifyToken,userRoute);
-app.use("/posts", verifyToken, postRoute)
+app.use("/posts", verifyToken, postRoute);
+
+// Serve files in the assets directory
+app.get("/assets/:filename", (req, res) => {
+  const { filename } = req.params;
+  if (!filename) {
+    return res.status(404).json({ error: "File not found" });
+  }
+  const filePath = path.join(__dirname, "public", "assets", filename);
+  res.sendFile(filePath, (err) => {
+    if (err) {
+      console.error(err);
+      res.status(err.status).end();
+    } else {
+      console.log(`Sent file: ${filePath}`);
+    }
+  });
+});
 
 // Start server and listen for requests
 const port = process.env.PORT;
