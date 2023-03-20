@@ -22,7 +22,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
 
   const patchFriend = async () => {
     const response = await fetch(
-      `${process.env.BASE_URL}/users/${_id}/${friendId}`,
+      `https://storify.onrender.com/users/${_id}/${friendId}`,
       {
         method: "PATCH",
         headers: {

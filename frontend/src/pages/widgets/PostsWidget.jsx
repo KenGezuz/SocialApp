@@ -9,7 +9,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   const token = useSelector((state) => state.token);
 
   const getPosts = async () => {
-    const response = await fetch("http://localhost:5000/posts/feed", {
+    const response = await fetch("https://storify.onrender.com/posts/feed", {
       method: "GET",
       headers: {Authorization: `Bearer ${token}`},
     });
@@ -19,7 +19,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
 
 
   const getUserPosts = async () => {
-    const response = await fetch(`${process.env.BASE_URL}/posts/${userId}/posts`,{
+    const response = await fetch(`https://storify.onrender.com/posts/${userId}/posts`,{
       method: "GET",
       headers: {Authorization: `Bearer ${token}`},
     });

@@ -66,7 +66,7 @@ const registerSchema = yup.object().shape({
     
   
       const savedUserResponse = await fetch(
-        `${process.env.BASE_URL}/api/auth/register`,
+        `https://storify.onrender.com/api/auth/register`,
         {
           method: "POST",
           body: formData,
@@ -81,7 +81,7 @@ const registerSchema = yup.object().shape({
       }
     };
     const login = async (values, onSubmitProps) => {
-      const loggedInResponse = await fetch(`${process.env.BASE_URL}/api/auth/login`, {
+      const loggedInResponse = await fetch(`https://storify.onrender.com/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
