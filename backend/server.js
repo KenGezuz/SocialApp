@@ -24,8 +24,8 @@ const app = express();
 app.use(cors());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({limit: "30mb", extended: false }));
+app.use(bodyParser.json({limit: "30mb", extended: false}));
 app.use("/assets", express.static(path.join(__dirname, "./public/assets")));
 
 
@@ -41,22 +41,7 @@ app.use("/api/auth", userAuthRoute);
 app.use("/users", verifyToken,userRoute);
 app.use("/posts", verifyToken, postRoute);
 
-// Serve files in the assets directory
-app.get("/assets/:filename", (req, res) => {
-  const { filename } = req.params;
-  if (!filename) {
-    return res.status(404).json({ error: "File not found" });
-  }
-  const filePath = path.join(__dirname, "public", "assets", filename);
-  res.sendFile(filePath, (err) => {
-    if (err) {
-      console.error(err);
-      res.status(err.status).end();
-    } else {
-      console.log(`Sent file: ${filePath}`);
-    }
-  });
-});
+
 
 // Start server and listen for requests
 const port = process.env.PORT;

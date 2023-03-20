@@ -85,9 +85,9 @@ export default function Navbar() {
                   <Message sx = {{ fontSize: "25px"}} />
                   <Notifications sx ={{fontSize: "25px"}}/>
                   <Help sx ={{fontSize: "25px"}}/>
-                  <FormControl variant="standard" value = {"Kenny Khosa"}>
+                  <FormControl variant="standard" value = {fullName}>
                       <Select 
-                      value = {"Kenny Khosa"}
+                      value = {fullName}
                       sx = {{
                         backgroudColor: neutralLight,
                         width: "150",
@@ -103,8 +103,8 @@ export default function Navbar() {
                       }}
                       input = {<InputBase />}
                       >
-                        <MenuItem value = {"Kenny Khosa"}>
-                          <Typography>{"Kenny Khosa"}</Typography>
+                        <MenuItem value = {fullName}>
+                          <Typography>{fullName}</Typography>
                         </MenuItem>
                         <MenuItem onClick={() => dispatch(setLogout())}>
                         Log Out

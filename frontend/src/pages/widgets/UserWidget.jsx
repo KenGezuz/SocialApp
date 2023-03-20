@@ -40,10 +40,6 @@ const UserWidget = ({userId, picturePath}) => {
     return null;
   }
 
- //const currentUser = user.friends;
- //const isFriend = currentUser.includes(user.id);
-// console.log(currentUser)
- console.table(user)
  
 
   const {

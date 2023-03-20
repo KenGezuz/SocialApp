@@ -35,13 +35,11 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   }
  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
- console.table(posts)
-
- const {_id, user_Id, firstName,lastName, description, location, picturePath,userPicturePath,likes} = posts;
-
+ 
   return (
     <>
-    {posts.map(({
+    {posts.map(
+      ({
       _id,
       userId,
       firstName,
@@ -49,13 +47,15 @@ const PostsWidget = ({ userId, isProfile = false }) => {
       location,
       description,
       picturePath,
+      userPicturePath,
       likes,
       comments,
     }) => (
       <PostWidget
       key = {_id}
       postId = {_id}
-      postUserId = {user_Id}
+      postUserId = {userId}
+      name = {`${firstName} ${lastName}`}
       description = {description}
       location = {location}
       picturePath={picturePath}
@@ -63,7 +63,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
       likes = {likes}
       comments = {comments}
       />
-      )}
+      ))}
 
     </>
   );

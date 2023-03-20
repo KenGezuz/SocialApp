@@ -24,7 +24,7 @@ const LoginPage = () => {
         backgroundColor = {theme.palette.background.alt}
         >
         <Typography fontWeight = "500" variant="h5" sx = {{mb: "1.5rem"}}>
-            Welocome to Social-App, the Social Media for Socials!
+            Welcome to Storify, the Social Media for Socials!
         </Typography>
         <Form />
         </Box>
