@@ -53,7 +53,7 @@ export default function Navbar() {
               }
              }}
               >
-              <img src='../../../logo-full.png'
+              <img src='https://kennykhosa16.files.wordpress.com/2023/03/logo-full.png'
               height = "50rem" />
               </Box>
              
